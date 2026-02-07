@@ -1,0 +1,7722 @@
+{
+  "agent_id": "product",
+  "session_number": 1,
+  "files_understood": {},
+  "decisions": [],
+  "patterns": [],
+  "current_task": "CRITICAL INSTRUCTIONS FOR MULTI-AGENT PARALLEL DEVELOPMENT:\n\n1. Create ONLY ONE file: feature_list.json (in the project root)\n2. Do NOT create any markdown files, docs, plans, or README files\n3. Do NOT explain your reasoning - just write the JSON file\n\n4. Use this EXACT flat JSON structure:\n{\n  \"pending_backend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"pending_frontend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"completed_backend\": [],\n  \"completed_frontend\": []\n}\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\u26a0\ufe0f  CRITICAL: INIT FEATURES MUST BE FIRST!\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nThe FIRST feature for EACH agent type MUST be a project initialization feature.\nAll other features will WAIT until init features complete.\n\nRequired structure:\n  Feature #1: {\"name\": \"Initialize [Framework] Backend\", \"is_init\": true, ...}\n  Feature #2+: {\"name\": \"User Auth\", \"depends_on\": [\"Initialize [Framework] Backend\"], ...}\n\nExamples of INIT features:\n  - Backend: \"Initialize NestJS App\", \"Setup Express Server\", \"Create FastAPI Project\"\n  - Frontend: \"Setup React with Vite\", \"Initialize Next.js App\", \"Create Vue Project\"\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nFEATURE STRUCTURE (with optional subtasks for parallel work):\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n{\n  \"name\": \"User Authentication\",\n  \"id\": \"user-auth\",  // Unique ID for dependency tracking\n  \"description\": \"Implement user login, registration, and session management\",\n  \"is_init\": false,  // true ONLY for first/setup features\n  \"depends_on\": [\"Initialize NestJS App\"],  // Features that must complete first\n  \"acceptance_criteria\": [\"Users can register\", \"Users can login\", \"JWT tokens work\"],\n  \"subtasks\": [  // OPTIONAL: Split into parallel subtasks\n    {\n      \"id\": \"auth-model\",\n      \"description\": \"Create User entity and repository\",\n      \"file_scope\": [\"backend/src/users/**\", \"backend/src/entities/user.*\"],\n      \"depends_on\": []\n    },\n    {\n      \"id\": \"auth-jwt\",\n      \"description\": \"Implement JWT authentication strategy\",\n      \"file_scope\": [\"backend/src/auth/**\"],\n      \"depends_on\": [\"auth-model\"]\n    }\n  ]\n}\n\n5. Create 3-5 features per agent type (backend, frontend)\n6. Subtasks enable PARALLEL development - multiple agents can work on different subtasks\n7. File scopes PREVENT CONFLICTS - agents only modify files in their scope\n8. After writing feature_list.json, STOP IMMEDIATELY. Do NOT continue with any other work.",
+  "completed_tasks": [],
+  "last_session_end": "2026-02-07T17:20:11.648791",
+  "session_history": [
+    {
+      "session_number": 1,
+      "started_at": "2026-02-07T17:18:24.164462",
+      "ended_at": "2026-02-07T17:20:11.648791",
+      "input_tokens": 13708,
+      "output_tokens": 2192,
+      "cost_usd": 0.0025328800000000004,
+      "files_read": [],
+      "files_written": [
+        "feature_list.json"
+      ],
+      "status": "completed",
+      "task": "CRITICAL INSTRUCTIONS FOR MULTI-AGENT PARALLEL DEVELOPMENT:\n\n1. Create ONLY ONE file: feature_list.json (in the project root)\n2. Do NOT create any markdown files, docs, plans, or README files\n3. Do NOT explain your reasoning - just write the JSON file\n\n4. Use this EXACT flat JSON structure:\n{\n  \"pending_backend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"pending_frontend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"completed_backend\": [],\n  \"completed_frontend\": []\n}\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\u26a0\ufe0f  CRITICAL: INIT FEATURES MUST BE FIRST!\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nThe FIRST feature for EACH agent type MUST be a project initialization feature.\nAll other features will WAIT until init features complete.\n\nRequired structure:\n  Feature #1: {\"name\": \"Initialize [Framework] Backend\", \"is_init\": true, ...}\n  Feature #2+: {\"name\": \"User Auth\", \"depends_on\": [\"Initialize [Framework] Backend\"], ...}\n\nExamples of INIT features:\n  - Backend: \"Initialize NestJS App\", \"Setup Express Server\", \"Create FastAPI Project\"\n  - Frontend: \"Setup React with Vite\", \"Initialize Next.js App\", \"Create Vue Project\"\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nFEATURE STRUCTURE (with optional subtasks for parallel work):\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n{\n  \"name\": \"User Authentication\",\n  \"id\": \"user-auth\",  // Unique ID for dependency tracking\n  \"description\": \"Implement user login, registration, and session management\",\n  \"is_init\": false,  // true ONLY for first/setup features\n  \"depends_on\": [\"Initialize NestJS App\"],  // Features that must complete first\n  \"acceptance_criteria\": [\"Users can register\", \"Users can login\", \"JWT tokens work\"],\n  \"subtasks\": [  // OPTIONAL: Split into parallel subtasks\n    {\n      \"id\": \"auth-model\",\n      \"description\": \"Create User entity and repository\",\n      \"file_scope\": [\"backend/src/users/**\", \"backend/src/entities/user.*\"],\n      \"depends_on\": []\n    },\n    {\n      \"id\": \"auth-jwt\",\n      \"description\": \"Implement JWT authentication strategy\",\n      \"file_scope\": [\"backend/src/auth/**\"],\n      \"depends_on\": [\"auth-model\"]\n    }\n  ]\n}\n\n5. Create 3-5 features per agent type (backend, frontend)\n6. Subtasks enable PARALLEL development - multiple agents can work on different subtasks\n7. File scopes PREVENT CONFLICTS - agents only modify files in their scope\n8. After writing feature_list.json, STOP IMMEDIATELY. Do NOT continue with any other work.",
+      "model": "deepseek-chat",
+      "error_message": null,
+      "chat_history": [
+        {
+          "role": "user",
+          "content": "# Agent: product\n## Task: CRITICAL INSTRUCTIONS FOR MULTI-AGENT PARALLEL DEVELOPMENT:\n\n1. Create ONLY ONE file: feature_list.json (in the project root)\n2. Do NOT create any markdown files, docs, plans, or README files\n3. Do NOT explain your reasoning - just write the JSON file\n\n4. Use this EXACT flat JSON structure:\n{\n  \"pending_backend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"pending_frontend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"completed_backend\": [],\n  \"completed_frontend\": []\n}\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\u26a0\ufe0f  CRITICAL: INIT FEATURES MUST BE FIRST!\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nThe FIRST feature for EACH agent type MUST be a project initialization feature.\nAll other features will WAIT until init features complete.\n\nRequired structure:\n  Feature #1: {\"name\": \"Initialize [Framework] Backend\", \"is_init\": true, ...}\n  Feature #2+: {\"name\": \"User Auth\", \"depends_on\": [\"Initialize [Framework] Backend\"], ...}\n\nExamples of INIT features:\n  - Backend: \"Initialize NestJS App\", \"Setup Express Server\", \"Create FastAPI Project\"\n  - Frontend: \"Setup React with Vite\", \"Initialize Next.js App\", \"Create Vue Project\"\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nFEATURE STRUCTURE (with optional subtasks for parallel work):\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n{\n  \"name\": \"User Authentication\",\n  \"id\": \"user-auth\",  // Unique ID for dependency tracking\n  \"description\": \"Implement user login, registration, and session management\",\n  \"is_init\": false,  // true ONLY for first/setup features\n  \"depends_on\": [\"Initialize NestJS App\"],  // Features that must complete first\n  \"acceptance_criteria\": [\"Users can register\", \"Users can login\", \"JWT tokens work\"],\n  \"subtasks\": [  // OPTIONAL: Split into parallel subtasks\n    {\n      \"id\": \"auth-model\",\n      \"description\": \"Create User entity and repository\",\n      \"file_scope\": [\"backend/src/users/**\", \"backend/src/entities/user.*\"],\n      \"depends_on\": []\n    },\n    {\n      \"id\": \"auth-jwt\",\n      \"description\": \"Implement JWT authentication strategy\",\n      \"file_scope\": [\"backend/src/auth/**\"],\n      \"depends_on\": [\"auth-model\"]\n    }\n  ]\n}\n\n5. Create 3-5 features per agent type (backend, frontend)\n6. Subtasks enable PARALLEL development - multiple agents can work on different subtasks\n7. File scopes PREVENT CONFLICTS - agents only modify files in their scope\n8. After writing feature_list.json, STOP IMMEDIATELY. Do NOT continue with any other work.\n\n## Session 1 Context Restoration\nAgent: product\n\n### In Progress: CRITICAL INSTRUCTIONS FOR MULTI-AGENT PARALLEL DEVELOPMENT:\n\n1. Create ONLY ONE file: feature_list.json (in the project root)\n2. Do NOT create any markdown files, docs, plans, or README files\n3. Do NOT explain your reasoning - just write the JSON file\n\n4. Use this EXACT flat JSON structure:\n{\n  \"pending_backend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"pending_frontend\": [\n    {\"name\": \"Feature Name\", \"description\": \"Brief description\", \"acceptance_criteria\": [\"criterion 1\"], \"depends_on\": []}\n  ],\n  \"completed_backend\": [],\n  \"completed_frontend\": []\n}\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\u26a0\ufe0f  CRITICAL: INIT FEATURES MUST BE FIRST!\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nThe FIRST feature for EACH agent type MUST be a project initialization feature.\nAll other features will WAIT until init features complete.\n\nRequired structure:\n  Feature #1: {\"name\": \"Initialize [Framework] Backend\", \"is_init\": true, ...}\n  Feature #2+: {\"name\": \"User Auth\", \"depends_on\": [\"Initialize [Framework] Backend\"], ...}\n\nExamples of INIT features:\n  - Backend: \"Initialize NestJS App\", \"Setup Express Server\", \"Create FastAPI Project\"\n  - Frontend: \"Setup React with Vite\", \"Initialize Next.js App\", \"Create Vue Project\"\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nFEATURE STRUCTURE (with optional subtasks for parallel work):\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n{\n  \"name\": \"User Authentication\",\n  \"id\": \"user-auth\",  // Unique ID for dependency tracking\n  \"description\": \"Implement user login, registration, and session management\",\n  \"is_init\": false,  // true ONLY for first/setup features\n  \"depends_on\": [\"Initialize NestJS App\"],  // Features that must complete first\n  \"acceptance_criteria\": [\"Users can register\", \"Users can login\", \"JWT tokens work\"],\n  \"subtasks\": [  // OPTIONAL: Split into parallel subtasks\n    {\n      \"id\": \"auth-model\",\n      \"description\": \"Create User entity and repository\",\n      \"file_scope\": [\"backend/src/users/**\", \"backend/src/entities/user.*\"],\n      \"depends_on\": []\n    },\n    {\n      \"id\": \"auth-jwt\",\n      \"description\": \"Implement JWT authentication strategy\",\n      \"file_scope\": [\"backend/src/auth/**\"],\n      \"depends_on\": [\"auth-model\"]\n    }\n  ]\n}\n\n5. Create 3-5 features per agent type (backend, frontend)\n6. Subtasks enable PARALLEL development - multiple agents can work on different subtasks\n7. File scopes PREVENT CONFLICTS - agents only modify files in their scope\n8. After writing feature_list.json, STOP IMMEDIATELY. Do NOT continue with any other work.\n\n\n## Project Structure:\n```\n\u251c\u2500\u2500 .agents/\n\u2502   \u251c\u2500\u2500 config.json\n\u2502   \u2514\u2500\u2500 settings_product.json\n\u251c\u2500\u2500 backend/\n\u251c\u2500\u2500 frontend/\n\u251c\u2500\u2500 product/\n\u2514\u2500\u2500 contracts.json\n```\n\n## Contracts Index\n- **types** (owner: None): ...\n- **endpoints** (owner: None): ...\n- **events** (owner: None): ...\n\n## Important Files:\n- `feature_list.json` - Located in project root. Contains pending_backend and pending_frontend arrays.\n  - Check this file for assigned work.\n  - When completing a feature, move it from pending_* to *_features.completed.\n\n## Commands:\n- `read <path>` - Read full file\n- `summary <path>` - Get file summary (saves tokens)\n- `contract <section>` - Get contract section\n- `diff <path>` - Get changes since last read"
+        },
+        {
+          "role": "assistant",
+          "content": "{\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "pending"
+        },
+        {
+          "role": "assistant",
+          "content": "_back"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Initialize"
+        },
+        {
+          "role": "assistant",
+          "content": " Nest"
+        },
+        {
+          "role": "assistant",
+          "content": "JS"
+        },
+        {
+          "role": "assistant",
+          "content": " Back"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-n"
+        },
+        {
+          "role": "assistant",
+          "content": "est"
+        },
+        {
+          "role": "assistant",
+          "content": "js"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Set"
+        },
+        {
+          "role": "assistant",
+          "content": " up"
+        },
+        {
+          "role": "assistant",
+          "content": " Nest"
+        },
+        {
+          "role": "assistant",
+          "content": "JS"
+        },
+        {
+          "role": "assistant",
+          "content": " application"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " Type"
+        },
+        {
+          "role": "assistant",
+          "content": "Script"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " database"
+        },
+        {
+          "role": "assistant",
+          "content": " connection"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " basic"
+        },
+        {
+          "role": "assistant",
+          "content": " project"
+        },
+        {
+          "role": "assistant",
+          "content": " structure"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " true"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "N"
+        },
+        {
+          "role": "assistant",
+          "content": "est"
+        },
+        {
+          "role": "assistant",
+          "content": "JS"
+        },
+        {
+          "role": "assistant",
+          "content": " project"
+        },
+        {
+          "role": "assistant",
+          "content": " created"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " Type"
+        },
+        {
+          "role": "assistant",
+          "content": "Script"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Database"
+        },
+        {
+          "role": "assistant",
+          "content": " connection"
+        },
+        {
+          "role": "assistant",
+          "content": " configured"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Project"
+        },
+        {
+          "role": "assistant",
+          "content": " structure"
+        },
+        {
+          "role": "assistant",
+          "content": " follows"
+        },
+        {
+          "role": "assistant",
+          "content": " Nest"
+        },
+        {
+          "role": "assistant",
+          "content": "JS"
+        },
+        {
+          "role": "assistant",
+          "content": " best"
+        },
+        {
+          "role": "assistant",
+          "content": " practices"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Build"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " test"
+        },
+        {
+          "role": "assistant",
+          "content": " commands"
+        },
+        {
+          "role": "assistant",
+          "content": " work"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-project"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " Nest"
+        },
+        {
+          "role": "assistant",
+          "content": "JS"
+        },
+        {
+          "role": "assistant",
+          "content": " project"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " CLI"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "package"
+        },
+        {
+          "role": "assistant",
+          "content": ".json"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "ts"
+        },
+        {
+          "role": "assistant",
+          "content": "config"
+        },
+        {
+          "role": "assistant",
+          "content": ".json"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/n"
+        },
+        {
+          "role": "assistant",
+          "content": "est"
+        },
+        {
+          "role": "assistant",
+          "content": "-cl"
+        },
+        {
+          "role": "assistant",
+          "content": "i"
+        },
+        {
+          "role": "assistant",
+          "content": ".json"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-d"
+        },
+        {
+          "role": "assistant",
+          "content": "b"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Set"
+        },
+        {
+          "role": "assistant",
+          "content": " up"
+        },
+        {
+          "role": "assistant",
+          "content": " database"
+        },
+        {
+          "role": "assistant",
+          "content": " connection"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " configuration"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/d"
+        },
+        {
+          "role": "assistant",
+          "content": "atabase"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/."
+        },
+        {
+          "role": "assistant",
+          "content": "env"
+        },
+        {
+          "role": "assistant",
+          "content": "*"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-project"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-st"
+        },
+        {
+          "role": "assistant",
+          "content": "ructure"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " core"
+        },
+        {
+          "role": "assistant",
+          "content": " modules"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " project"
+        },
+        {
+          "role": "assistant",
+          "content": " structure"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/app"
+        },
+        {
+          "role": "assistant",
+          "content": ".module"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/main"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/common"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-project"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "User"
+        },
+        {
+          "role": "assistant",
+          "content": " Authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " System"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "user"
+        },
+        {
+          "role": "assistant",
+          "content": "-auth"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Implement"
+        },
+        {
+          "role": "assistant",
+          "content": " user"
+        },
+        {
+          "role": "assistant",
+          "content": " registration"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " login"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " J"
+        },
+        {
+          "role": "assistant",
+          "content": "WT"
+        },
+        {
+          "role": "assistant",
+          "content": " token"
+        },
+        {
+          "role": "assistant",
+          "content": " generation"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " validation"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " false"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-n"
+        },
+        {
+          "role": "assistant",
+          "content": "est"
+        },
+        {
+          "role": "assistant",
+          "content": "js"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Users"
+        },
+        {
+          "role": "assistant",
+          "content": " can"
+        },
+        {
+          "role": "assistant",
+          "content": " register"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " email"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " password"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Users"
+        },
+        {
+          "role": "assistant",
+          "content": " can"
+        },
+        {
+          "role": "assistant",
+          "content": " login"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " receive"
+        },
+        {
+          "role": "assistant",
+          "content": " J"
+        },
+        {
+          "role": "assistant",
+          "content": "WT"
+        },
+        {
+          "role": "assistant",
+          "content": " token"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Protected"
+        },
+        {
+          "role": "assistant",
+          "content": " routes"
+        },
+        {
+          "role": "assistant",
+          "content": " require"
+        },
+        {
+          "role": "assistant",
+          "content": " valid"
+        },
+        {
+          "role": "assistant",
+          "content": " J"
+        },
+        {
+          "role": "assistant",
+          "content": "WT"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Password"
+        },
+        {
+          "role": "assistant",
+          "content": " has"
+        },
+        {
+          "role": "assistant",
+          "content": "hing"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " bc"
+        },
+        {
+          "role": "assistant",
+          "content": "rypt"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-model"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " User"
+        },
+        {
+          "role": "assistant",
+          "content": " entity"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " repository"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/users"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "entities"
+        },
+        {
+          "role": "assistant",
+          "content": "/user"
+        },
+        {
+          "role": "assistant",
+          "content": ".*"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-j"
+        },
+        {
+          "role": "assistant",
+          "content": "wt"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Implement"
+        },
+        {
+          "role": "assistant",
+          "content": " J"
+        },
+        {
+          "role": "assistant",
+          "content": "WT"
+        },
+        {
+          "role": "assistant",
+          "content": " authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " strategy"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/auth"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-model"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-gu"
+        },
+        {
+          "role": "assistant",
+          "content": "ards"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " guards"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " decor"
+        },
+        {
+          "role": "assistant",
+          "content": "ators"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/common"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "gu"
+        },
+        {
+          "role": "assistant",
+          "content": "ards"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/common"
+        },
+        {
+          "role": "assistant",
+          "content": "/de"
+        },
+        {
+          "role": "assistant",
+          "content": "cor"
+        },
+        {
+          "role": "assistant",
+          "content": "ators"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-j"
+        },
+        {
+          "role": "assistant",
+          "content": "wt"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Course"
+        },
+        {
+          "role": "assistant",
+          "content": " Management"
+        },
+        {
+          "role": "assistant",
+          "content": " API"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-api"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " APIs"
+        },
+        {
+          "role": "assistant",
+          "content": " for"
+        },
+        {
+          "role": "assistant",
+          "content": " managing"
+        },
+        {
+          "role": "assistant",
+          "content": " courses"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " lessons"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " content"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " false"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-n"
+        },
+        {
+          "role": "assistant",
+          "content": "est"
+        },
+        {
+          "role": "assistant",
+          "content": "js"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "CR"
+        },
+        {
+          "role": "assistant",
+          "content": "UD"
+        },
+        {
+          "role": "assistant",
+          "content": " operations"
+        },
+        {
+          "role": "assistant",
+          "content": " for"
+        },
+        {
+          "role": "assistant",
+          "content": " courses"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "CR"
+        },
+        {
+          "role": "assistant",
+          "content": "UD"
+        },
+        {
+          "role": "assistant",
+          "content": " operations"
+        },
+        {
+          "role": "assistant",
+          "content": " for"
+        },
+        {
+          "role": "assistant",
+          "content": " lessons"
+        },
+        {
+          "role": "assistant",
+          "content": " within"
+        },
+        {
+          "role": "assistant",
+          "content": " courses"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Course"
+        },
+        {
+          "role": "assistant",
+          "content": " enrollment"
+        },
+        {
+          "role": "assistant",
+          "content": " management"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " content"
+        },
+        {
+          "role": "assistant",
+          "content": " storage"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " retrieval"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-model"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " Course"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " Lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " entities"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/c"
+        },
+        {
+          "role": "assistant",
+          "content": "ourses"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "entities"
+        },
+        {
+          "role": "assistant",
+          "content": "/c"
+        },
+        {
+          "role": "assistant",
+          "content": "ourse"
+        },
+        {
+          "role": "assistant",
+          "content": ".*"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "entities"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "lesson"
+        },
+        {
+          "role": "assistant",
+          "content": ".*"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-cont"
+        },
+        {
+          "role": "assistant",
+          "content": "rollers"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Implement"
+        },
+        {
+          "role": "assistant",
+          "content": " course"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " controllers"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/c"
+        },
+        {
+          "role": "assistant",
+          "content": "ourses"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "controllers"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-model"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-services"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " business"
+        },
+        {
+          "role": "assistant",
+          "content": " logic"
+        },
+        {
+          "role": "assistant",
+          "content": " for"
+        },
+        {
+          "role": "assistant",
+          "content": " course"
+        },
+        {
+          "role": "assistant",
+          "content": " management"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/c"
+        },
+        {
+          "role": "assistant",
+          "content": "ourses"
+        },
+        {
+          "role": "assistant",
+          "content": "/services"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-model"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Progress"
+        },
+        {
+          "role": "assistant",
+          "content": " Tracking"
+        },
+        {
+          "role": "assistant",
+          "content": " System"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "progress"
+        },
+        {
+          "role": "assistant",
+          "content": "-t"
+        },
+        {
+          "role": "assistant",
+          "content": "racking"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Track"
+        },
+        {
+          "role": "assistant",
+          "content": " user"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": " through"
+        },
+        {
+          "role": "assistant",
+          "content": " courses"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " lessons"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " false"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-api"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "user"
+        },
+        {
+          "role": "assistant",
+          "content": "-auth"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Track"
+        },
+        {
+          "role": "assistant",
+          "content": " lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " completion"
+        },
+        {
+          "role": "assistant",
+          "content": " status"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Calculate"
+        },
+        {
+          "role": "assistant",
+          "content": " course"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": " percentage"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Store"
+        },
+        {
+          "role": "assistant",
+          "content": " quiz"
+        },
+        {
+          "role": "assistant",
+          "content": " scores"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " attempts"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Generate"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": " reports"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "progress"
+        },
+        {
+          "role": "assistant",
+          "content": "-model"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": " tracking"
+        },
+        {
+          "role": "assistant",
+          "content": " entities"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/pro"
+        },
+        {
+          "role": "assistant",
+          "content": "gress"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "entities"
+        },
+        {
+          "role": "assistant",
+          "content": "/pro"
+        },
+        {
+          "role": "assistant",
+          "content": "gress"
+        },
+        {
+          "role": "assistant",
+          "content": ".*"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "entities"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "quiz"
+        },
+        {
+          "role": "assistant",
+          "content": "-att"
+        },
+        {
+          "role": "assistant",
+          "content": "empt"
+        },
+        {
+          "role": "assistant",
+          "content": ".*"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "progress"
+        },
+        {
+          "role": "assistant",
+          "content": "-service"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Implement"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": " calculation"
+        },
+        {
+          "role": "assistant",
+          "content": " logic"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/pro"
+        },
+        {
+          "role": "assistant",
+          "content": "gress"
+        },
+        {
+          "role": "assistant",
+          "content": "/services"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "progress"
+        },
+        {
+          "role": "assistant",
+          "content": "-model"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "progress"
+        },
+        {
+          "role": "assistant",
+          "content": "-cont"
+        },
+        {
+          "role": "assistant",
+          "content": "rollers"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " APIs"
+        },
+        {
+          "role": "assistant",
+          "content": " for"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": " tracking"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "backend"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/pro"
+        },
+        {
+          "role": "assistant",
+          "content": "gress"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "controllers"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "progress"
+        },
+        {
+          "role": "assistant",
+          "content": "-service"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "pending"
+        },
+        {
+          "role": "assistant",
+          "content": "_front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Initialize"
+        },
+        {
+          "role": "assistant",
+          "content": " React"
+        },
+        {
+          "role": "assistant",
+          "content": " Front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-react"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Set"
+        },
+        {
+          "role": "assistant",
+          "content": " up"
+        },
+        {
+          "role": "assistant",
+          "content": " React"
+        },
+        {
+          "role": "assistant",
+          "content": " application"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " V"
+        },
+        {
+          "role": "assistant",
+          "content": "ite"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " Type"
+        },
+        {
+          "role": "assistant",
+          "content": "Script"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " basic"
+        },
+        {
+          "role": "assistant",
+          "content": " routing"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " true"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "React"
+        },
+        {
+          "role": "assistant",
+          "content": " project"
+        },
+        {
+          "role": "assistant",
+          "content": " created"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " V"
+        },
+        {
+          "role": "assistant",
+          "content": "ite"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " Type"
+        },
+        {
+          "role": "assistant",
+          "content": "Script"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Basic"
+        },
+        {
+          "role": "assistant",
+          "content": " routing"
+        },
+        {
+          "role": "assistant",
+          "content": " structure"
+        },
+        {
+          "role": "assistant",
+          "content": " set"
+        },
+        {
+          "role": "assistant",
+          "content": " up"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Build"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " dev"
+        },
+        {
+          "role": "assistant",
+          "content": " commands"
+        },
+        {
+          "role": "assistant",
+          "content": " work"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Project"
+        },
+        {
+          "role": "assistant",
+          "content": " structure"
+        },
+        {
+          "role": "assistant",
+          "content": " follows"
+        },
+        {
+          "role": "assistant",
+          "content": " React"
+        },
+        {
+          "role": "assistant",
+          "content": " best"
+        },
+        {
+          "role": "assistant",
+          "content": " practices"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-project"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " React"
+        },
+        {
+          "role": "assistant",
+          "content": " project"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " V"
+        },
+        {
+          "role": "assistant",
+          "content": "ite"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "package"
+        },
+        {
+          "role": "assistant",
+          "content": ".json"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/v"
+        },
+        {
+          "role": "assistant",
+          "content": "ite"
+        },
+        {
+          "role": "assistant",
+          "content": ".config"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "ts"
+        },
+        {
+          "role": "assistant",
+          "content": "config"
+        },
+        {
+          "role": "assistant",
+          "content": ".json"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-r"
+        },
+        {
+          "role": "assistant",
+          "content": "outing"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Set"
+        },
+        {
+          "role": "assistant",
+          "content": " up"
+        },
+        {
+          "role": "assistant",
+          "content": " React"
+        },
+        {
+          "role": "assistant",
+          "content": " Router"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " basic"
+        },
+        {
+          "role": "assistant",
+          "content": " routes"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "App"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "x"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/r"
+        },
+        {
+          "role": "assistant",
+          "content": "outes"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/main"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "x"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-project"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-st"
+        },
+        {
+          "role": "assistant",
+          "content": "ructure"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " core"
+        },
+        {
+          "role": "assistant",
+          "content": " project"
+        },
+        {
+          "role": "assistant",
+          "content": " structure"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " components"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/components"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/l"
+        },
+        {
+          "role": "assistant",
+          "content": "ayout"
+        },
+        {
+          "role": "assistant",
+          "content": "s"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/h"
+        },
+        {
+          "role": "assistant",
+          "content": "ooks"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-project"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " UI"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-ui"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " login"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " registration"
+        },
+        {
+          "role": "assistant",
+          "content": ","
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " flow"
+        },
+        {
+          "role": "assistant",
+          "content": " UI"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " false"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-react"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Login"
+        },
+        {
+          "role": "assistant",
+          "content": " page"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " form"
+        },
+        {
+          "role": "assistant",
+          "content": " validation"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Registration"
+        },
+        {
+          "role": "assistant",
+          "content": " page"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " form"
+        },
+        {
+          "role": "assistant",
+          "content": " validation"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Protected"
+        },
+        {
+          "role": "assistant",
+          "content": " route"
+        },
+        {
+          "role": "assistant",
+          "content": " wrapper"
+        },
+        {
+          "role": "assistant",
+          "content": " component"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " state"
+        },
+        {
+          "role": "assistant",
+          "content": " management"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " login"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " registration"
+        },
+        {
+          "role": "assistant",
+          "content": " pages"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "/auth"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-components"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " reusable"
+        },
+        {
+          "role": "assistant",
+          "content": " authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " components"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/components"
+        },
+        {
+          "role": "assistant",
+          "content": "/auth"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-con"
+        },
+        {
+          "role": "assistant",
+          "content": "text"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Implement"
+        },
+        {
+          "role": "assistant",
+          "content": " authentication"
+        },
+        {
+          "role": "assistant",
+          "content": " context"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " hooks"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "context"
+        },
+        {
+          "role": "assistant",
+          "content": "s"
+        },
+        {
+          "role": "assistant",
+          "content": "/auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-con"
+        },
+        {
+          "role": "assistant",
+          "content": "text"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "x"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/h"
+        },
+        {
+          "role": "assistant",
+          "content": "ooks"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "use"
+        },
+        {
+          "role": "assistant",
+          "content": "-auth"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Course"
+        },
+        {
+          "role": "assistant",
+          "content": " Dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": " UI"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-d"
+        },
+        {
+          "role": "assistant",
+          "content": "ashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": " for"
+        },
+        {
+          "role": "assistant",
+          "content": " browsing"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " managing"
+        },
+        {
+          "role": "assistant",
+          "content": " courses"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " false"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "init"
+        },
+        {
+          "role": "assistant",
+          "content": "-react"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "auth"
+        },
+        {
+          "role": "assistant",
+          "content": "-ui"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Course"
+        },
+        {
+          "role": "assistant",
+          "content": " listing"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " search"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " filters"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Course"
+        },
+        {
+          "role": "assistant",
+          "content": " detail"
+        },
+        {
+          "role": "assistant",
+          "content": " view"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " enrollment"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "User"
+        },
+        {
+          "role": "assistant",
+          "content": "'s"
+        },
+        {
+          "role": "assistant",
+          "content": " enrolled"
+        },
+        {
+          "role": "assistant",
+          "content": " courses"
+        },
+        {
+          "role": "assistant",
+          "content": " dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Respons"
+        },
+        {
+          "role": "assistant",
+          "content": "ive"
+        },
+        {
+          "role": "assistant",
+          "content": " grid"
+        },
+        {
+          "role": "assistant",
+          "content": " layout"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "-p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " main"
+        },
+        {
+          "role": "assistant",
+          "content": " dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " course"
+        },
+        {
+          "role": "assistant",
+          "content": " pages"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "/d"
+        },
+        {
+          "role": "assistant",
+          "content": "ashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "/c"
+        },
+        {
+          "role": "assistant",
+          "content": "ourses"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-components"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " reusable"
+        },
+        {
+          "role": "assistant",
+          "content": " course"
+        },
+        {
+          "role": "assistant",
+          "content": " cards"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " components"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/components"
+        },
+        {
+          "role": "assistant",
+          "content": "/c"
+        },
+        {
+          "role": "assistant",
+          "content": "ourses"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "-p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "-l"
+        },
+        {
+          "role": "assistant",
+          "content": "ayout"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Implement"
+        },
+        {
+          "role": "assistant",
+          "content": " dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": " layout"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " navigation"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/l"
+        },
+        {
+          "role": "assistant",
+          "content": "ayout"
+        },
+        {
+          "role": "assistant",
+          "content": "s"
+        },
+        {
+          "role": "assistant",
+          "content": "/d"
+        },
+        {
+          "role": "assistant",
+          "content": "ashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "-l"
+        },
+        {
+          "role": "assistant",
+          "content": "ayout"
+        },
+        {
+          "role": "assistant",
+          "content": ".ts"
+        },
+        {
+          "role": "assistant",
+          "content": "x"
+        },
+        {
+          "role": "assistant",
+          "content": "\","
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/components"
+        },
+        {
+          "role": "assistant",
+          "content": "/l"
+        },
+        {
+          "role": "assistant",
+          "content": "ayout"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "dashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "-p"
+        },
+        {
+          "role": "assistant",
+          "content": "ages"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "name"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " Player"
+        },
+        {
+          "role": "assistant",
+          "content": " UI"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "lesson"
+        },
+        {
+          "role": "assistant",
+          "content": "-player"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " interface"
+        },
+        {
+          "role": "assistant",
+          "content": " for"
+        },
+        {
+          "role": "assistant",
+          "content": " viewing"
+        },
+        {
+          "role": "assistant",
+          "content": " lessons"
+        },
+        {
+          "role": "assistant",
+          "content": " and"
+        },
+        {
+          "role": "assistant",
+          "content": " tracking"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "is"
+        },
+        {
+          "role": "assistant",
+          "content": "_init"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " false"
+        },
+        {
+          "role": "assistant",
+          "content": ",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "course"
+        },
+        {
+          "role": "assistant",
+          "content": "-d"
+        },
+        {
+          "role": "assistant",
+          "content": "ashboard"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "accept"
+        },
+        {
+          "role": "assistant",
+          "content": "ance"
+        },
+        {
+          "role": "assistant",
+          "content": "_c"
+        },
+        {
+          "role": "assistant",
+          "content": "riteria"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " content"
+        },
+        {
+          "role": "assistant",
+          "content": " display"
+        },
+        {
+          "role": "assistant",
+          "content": " with"
+        },
+        {
+          "role": "assistant",
+          "content": " video"
+        },
+        {
+          "role": "assistant",
+          "content": "/text"
+        },
+        {
+          "role": "assistant",
+          "content": " support"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Progress"
+        },
+        {
+          "role": "assistant",
+          "content": " tracking"
+        },
+        {
+          "role": "assistant",
+          "content": " indicators"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Next"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "previous"
+        },
+        {
+          "role": "assistant",
+          "content": " lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " navigation"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Quiz"
+        },
+        {
+          "role": "assistant",
+          "content": " interface"
+        },
+        {
+          "role": "assistant",
+          "content": " integration"
+        },
+        {
+          "role": "assistant",
+          "content": "\"\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "sub"
+        },
+        {
+          "role": "assistant",
+          "content": "tasks"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "lesson"
+        },
+        {
+          "role": "assistant",
+          "content": "-player"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " lesson"
+        },
+        {
+          "role": "assistant",
+          "content": " viewing"
+        },
+        {
+          "role": "assistant",
+          "content": " component"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/components"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "lesson"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "progress"
+        },
+        {
+          "role": "assistant",
+          "content": "-ui"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Implement"
+        },
+        {
+          "role": "assistant",
+          "content": " progress"
+        },
+        {
+          "role": "assistant",
+          "content": " tracking"
+        },
+        {
+          "role": "assistant",
+          "content": " UI"
+        },
+        {
+          "role": "assistant",
+          "content": " components"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/components"
+        },
+        {
+          "role": "assistant",
+          "content": "/pro"
+        },
+        {
+          "role": "assistant",
+          "content": "gress"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "lesson"
+        },
+        {
+          "role": "assistant",
+          "content": "-player"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " },\n"
+        },
+        {
+          "role": "assistant",
+          "content": " {\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "id"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "quiz"
+        },
+        {
+          "role": "assistant",
+          "content": "-ui"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "description"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "Create"
+        },
+        {
+          "role": "assistant",
+          "content": " quiz"
+        },
+        {
+          "role": "assistant",
+          "content": " interface"
+        },
+        {
+          "role": "assistant",
+          "content": " components"
+        },
+        {
+          "role": "assistant",
+          "content": "\",\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "file"
+        },
+        {
+          "role": "assistant",
+          "content": "_"
+        },
+        {
+          "role": "assistant",
+          "content": "scope"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "/src"
+        },
+        {
+          "role": "assistant",
+          "content": "/components"
+        },
+        {
+          "role": "assistant",
+          "content": "/"
+        },
+        {
+          "role": "assistant",
+          "content": "quiz"
+        },
+        {
+          "role": "assistant",
+          "content": "/**"
+        },
+        {
+          "role": "assistant",
+          "content": "\"],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "dep"
+        },
+        {
+          "role": "assistant",
+          "content": "ends"
+        },
+        {
+          "role": "assistant",
+          "content": "_on"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [\""
+        },
+        {
+          "role": "assistant",
+          "content": "lesson"
+        },
+        {
+          "role": "assistant",
+          "content": "-player"
+        },
+        {
+          "role": "assistant",
+          "content": "\"]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ]\n"
+        },
+        {
+          "role": "assistant",
+          "content": " }\n"
+        },
+        {
+          "role": "assistant",
+          "content": " ],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "completed"
+        },
+        {
+          "role": "assistant",
+          "content": "_back"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " [],\n"
+        },
+        {
+          "role": "assistant",
+          "content": " \""
+        },
+        {
+          "role": "assistant",
+          "content": "completed"
+        },
+        {
+          "role": "assistant",
+          "content": "_front"
+        },
+        {
+          "role": "assistant",
+          "content": "end"
+        },
+        {
+          "role": "assistant",
+          "content": "\":"
+        },
+        {
+          "role": "assistant",
+          "content": " []\n"
+        },
+        {
+          "role": "assistant",
+          "content": "}"
+        }
+      ]
+    }
+  ]
+}

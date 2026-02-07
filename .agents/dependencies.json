@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "product": {
+      "agent_id": "product",
+      "reads": [],
+      "writes": [
+        "feature_list.json"
+      ],
+      "last_updated": "2026-02-07T17:19:19.318235"
+    }
+  },
+  "access_log": [
+    {
+      "path": "feature_list.json",
+      "access_type": "write",
+      "agent_id": "product",
+      "timestamp": "2026-02-07T17:19:19.318244",
+      "session": 0
+    }
+  ]
+}

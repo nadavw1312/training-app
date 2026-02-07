@@ -1,0 +1,272 @@
+{
+  "pending_backend": [
+    {
+      "name": "Initialize NestJS Backend",
+      "id": "init-nestjs",
+      "description": "Set up NestJS application with TypeScript, database connection, and basic project structure",
+      "is_init": true,
+      "depends_on": [],
+      "acceptance_criteria": [
+        "NestJS project created with TypeScript",
+        "Database connection configured",
+        "Project structure follows NestJS best practices",
+        "Build and test commands work"
+      ],
+      "subtasks": [
+        {
+          "id": "init-project",
+          "description": "Create NestJS project with CLI",
+          "file_scope": ["backend/package.json", "backend/tsconfig.json", "backend/nest-cli.json"],
+          "depends_on": []
+        },
+        {
+          "id": "init-db",
+          "description": "Set up database connection and configuration",
+          "file_scope": ["backend/src/database/**", "backend/.env*"],
+          "depends_on": ["init-project"]
+        },
+        {
+          "id": "init-structure",
+          "description": "Create core modules and project structure",
+          "file_scope": ["backend/src/app.module.ts", "backend/src/main.ts", "backend/src/common/**"],
+          "depends_on": ["init-project"]
+        }
+      ]
+    },
+    {
+      "name": "User Authentication System",
+      "id": "user-auth",
+      "description": "Implement user registration, login, JWT token generation and validation",
+      "is_init": false,
+      "depends_on": ["init-nestjs"],
+      "acceptance_criteria": [
+        "Users can register with email and password",
+        "Users can login and receive JWT token",
+        "Protected routes require valid JWT",
+        "Password hashing with bcrypt"
+      ],
+      "subtasks": [
+        {
+          "id": "auth-model",
+          "description": "Create User entity and repository",
+          "file_scope": ["backend/src/users/**", "backend/src/entities/user.*"],
+          "depends_on": []
+        },
+        {
+          "id": "auth-jwt",
+          "description": "Implement JWT authentication strategy",
+          "file_scope": ["backend/src/auth/**"],
+          "depends_on": ["auth-model"]
+        },
+        {
+          "id": "auth-guards",
+          "description": "Create authentication guards and decorators",
+          "file_scope": ["backend/src/common/guards/**", "backend/src/common/decorators/**"],
+          "depends_on": ["auth-jwt"]
+        }
+      ]
+    },
+    {
+      "name": "Course Management API",
+      "id": "course-api",
+      "description": "Create APIs for managing courses, lessons, and content",
+      "is_init": false,
+      "depends_on": ["init-nestjs"],
+      "acceptance_criteria": [
+        "CRUD operations for courses",
+        "CRUD operations for lessons within courses",
+        "Course enrollment management",
+        "Lesson content storage and retrieval"
+      ],
+      "subtasks": [
+        {
+          "id": "course-model",
+          "description": "Create Course and Lesson entities",
+          "file_scope": ["backend/src/courses/**", "backend/src/entities/course.*", "backend/src/entities/lesson.*"],
+          "depends_on": []
+        },
+        {
+          "id": "course-controllers",
+          "description": "Implement course and lesson controllers",
+          "file_scope": ["backend/src/courses/controllers/**"],
+          "depends_on": ["course-model"]
+        },
+        {
+          "id": "course-services",
+          "description": "Create business logic for course management",
+          "file_scope": ["backend/src/courses/services/**"],
+          "depends_on": ["course-model"]
+        }
+      ]
+    },
+    {
+      "name": "Progress Tracking System",
+      "id": "progress-tracking",
+      "description": "Track user progress through courses and lessons",
+      "is_init": false,
+      "depends_on": ["course-api", "user-auth"],
+      "acceptance_criteria": [
+        "Track lesson completion status",
+        "Calculate course progress percentage",
+        "Store quiz scores and attempts",
+        "Generate progress reports"
+      ],
+      "subtasks": [
+        {
+          "id": "progress-model",
+          "description": "Create progress tracking entities",
+          "file_scope": ["backend/src/progress/**", "backend/src/entities/progress.*", "backend/src/entities/quiz-attempt.*"],
+          "depends_on": []
+        },
+        {
+          "id": "progress-service",
+          "description": "Implement progress calculation logic",
+          "file_scope": ["backend/src/progress/services/**"],
+          "depends_on": ["progress-model"]
+        },
+        {
+          "id": "progress-controllers",
+          "description": "Create APIs for progress tracking",
+          "file_scope": ["backend/src/progress/controllers/**"],
+          "depends_on": ["progress-service"]
+        }
+      ]
+    }
+  ],
+  "pending_frontend": [
+    {
+      "name": "Initialize React Frontend",
+      "id": "init-react",
+      "description": "Set up React application with Vite, TypeScript, and basic routing",
+      "is_init": true,
+      "depends_on": [],
+      "acceptance_criteria": [
+        "React project created with Vite and TypeScript",
+        "Basic routing structure set up",
+        "Build and dev commands work",
+        "Project structure follows React best practices"
+      ],
+      "subtasks": [
+        {
+          "id": "init-project",
+          "description": "Create React project with Vite",
+          "file_scope": ["frontend/package.json", "frontend/vite.config.ts", "frontend/tsconfig.json"],
+          "depends_on": []
+        },
+        {
+          "id": "init-routing",
+          "description": "Set up React Router and basic routes",
+          "file_scope": ["frontend/src/App.tsx", "frontend/src/routes/**", "frontend/src/main.tsx"],
+          "depends_on": ["init-project"]
+        },
+        {
+          "id": "init-structure",
+          "description": "Create core project structure and components",
+          "file_scope": ["frontend/src/components/**", "frontend/src/layouts/**", "frontend/src/hooks/**"],
+          "depends_on": ["init-project"]
+        }
+      ]
+    },
+    {
+      "name": "Authentication UI",
+      "id": "auth-ui",
+      "description": "Create login, registration, and authentication flow UI",
+      "is_init": false,
+      "depends_on": ["init-react"],
+      "acceptance_criteria": [
+        "Login page with form validation",
+        "Registration page with form validation",
+        "Protected route wrapper component",
+        "Authentication state management"
+      ],
+      "subtasks": [
+        {
+          "id": "auth-pages",
+          "description": "Create login and registration pages",
+          "file_scope": ["frontend/src/pages/auth/**"],
+          "depends_on": []
+        },
+        {
+          "id": "auth-components",
+          "description": "Create reusable authentication components",
+          "file_scope": ["frontend/src/components/auth/**"],
+          "depends_on": ["auth-pages"]
+        },
+        {
+          "id": "auth-context",
+          "description": "Implement authentication context and hooks",
+          "file_scope": ["frontend/src/contexts/auth-context.tsx", "frontend/src/hooks/use-auth.ts"],
+          "depends_on": ["auth-pages"]
+        }
+      ]
+    },
+    {
+      "name": "Course Dashboard UI",
+      "id": "course-dashboard",
+      "description": "Create dashboard for browsing and managing courses",
+      "is_init": false,
+      "depends_on": ["init-react", "auth-ui"],
+      "acceptance_criteria": [
+        "Course listing with search and filters",
+        "Course detail view with enrollment",
+        "User's enrolled courses dashboard",
+        "Responsive grid layout"
+      ],
+      "subtasks": [
+        {
+          "id": "dashboard-pages",
+          "description": "Create main dashboard and course pages",
+          "file_scope": ["frontend/src/pages/dashboard/**", "frontend/src/pages/courses/**"],
+          "depends_on": []
+        },
+        {
+          "id": "course-components",
+          "description": "Create reusable course cards and components",
+          "file_scope": ["frontend/src/components/courses/**"],
+          "depends_on": ["dashboard-pages"]
+        },
+        {
+          "id": "dashboard-layout",
+          "description": "Implement dashboard layout with navigation",
+          "file_scope": ["frontend/src/layouts/dashboard-layout.tsx", "frontend/src/components/layout/**"],
+          "depends_on": ["dashboard-pages"]
+        }
+      ]
+    },
+    {
+      "name": "Lesson Player UI",
+      "id": "lesson-player",
+      "description": "Create interface for viewing lessons and tracking progress",
+      "is_init": false,
+      "depends_on": ["course-dashboard"],
+      "acceptance_criteria": [
+        "Lesson content display with video/text support",
+        "Progress tracking indicators",
+        "Next/previous lesson navigation",
+        "Quiz interface integration"
+      ],
+      "subtasks": [
+        {
+          "id": "lesson-player",
+          "description": "Create lesson viewing component",
+          "file_scope": ["frontend/src/components/lesson/**"],
+          "depends_on": []
+        },
+        {
+          "id": "progress-ui",
+          "description": "Implement progress tracking UI components",
+          "file_scope": ["frontend/src/components/progress/**"],
+          "depends_on": ["lesson-player"]
+        },
+        {
+          "id": "quiz-ui",
+          "description": "Create quiz interface components",
+          "file_scope": ["frontend/src/components/quiz/**"],
+          "depends_on": ["lesson-player"]
+        }
+      ]
+    }
+  ],
+  "completed_backend": [],
+  "completed_frontend": []
+}
