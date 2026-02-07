@@ -7,6 +7,49 @@
         "feature_list.json"
       ],
       "last_updated": "2026-02-07T17:19:19.318235"
+    },
+    "frontend": {
+      "agent_id": "frontend",
+      "reads": [
+        "feature_list.json",
+        "frontend/package.json",
+        "frontend/src/main.tsx"
+      ],
+      "writes": [
+        "feature_list.json",
+        "frontend/src/App.css",
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Courses/Courses.tsx",
+        "frontend/src/pages/Dashboard/Dashboard.tsx",
+        "frontend/src/pages/Lessons/Lessons.tsx",
+        "frontend/src/pages/Profile/Profile.tsx"
+      ],
+      "last_updated": "2026-02-07T17:27:03.965862"
+    },
+    "backend": {
+      "agent_id": "backend",
+      "reads": [
+        "backend/src/app.module.ts"
+      ],
+      "writes": [
+        "backend/.env.example",
+        "backend/docker-compose.yml",
+        "backend/src/app.module.ts",
+        "backend/src/config/database.config.ts",
+        "backend/src/main.ts",
+        "backend/src/modules/users/controllers/user.controller.ts",
+        "backend/src/modules/users/dms/user.dm.ts",
+        "backend/src/modules/users/dtos/create-user-request.dto.ts",
+        "backend/src/modules/users/dtos/user-response.dto.ts",
+        "backend/src/modules/users/enums/user-role.enum.ts",
+        "backend/src/modules/users/models/user.entity.ts",
+        "backend/src/modules/users/providers/user.provider.ts",
+        "backend/src/modules/users/repositories/user.repository.ts",
+        "backend/src/modules/users/services/user.service.ts",
+        "backend/src/modules/users/transformers/user.transformer.ts",
+        "backend/src/modules/users/users.module.ts"
+      ],
+      "last_updated": "2026-02-07T17:27:13.521013"
     }
   },
   "access_log": [
@@ -15,6 +58,230 @@
       "access_type": "write",
       "agent_id": "product",
       "timestamp": "2026-02-07T17:19:19.318244",
+      "session": 0
+    },
+    {
+      "path": "frontend/package.json",
+      "access_type": "read",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:21:20.142066",
+      "session": 0
+    },
+    {
+      "path": "backend/src/app.module.ts",
+      "access_type": "read",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:22:10.501044",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "access_type": "read",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:22:22.194504",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:22:44.139118",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/App.css",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:23:10.959057",
+      "session": 0
+    },
+    {
+      "path": "backend/src/config/database.config.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:23:11.360883",
+      "session": 0
+    },
+    {
+      "path": "backend/src/app.module.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:23:19.868235",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/pages/Dashboard/Dashboard.tsx",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:23:38.908370",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/models/user.entity.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:23:46.715770",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/enums/user-role.enum.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:23:50.942520",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/dms/user.dm.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:23:56.342845",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/pages/Courses/Courses.tsx",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:23:57.681901",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/dtos/create-user-request.dto.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:24:05.123650",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/dtos/user-response.dto.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:24:14.102914",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/pages/Lessons/Lessons.tsx",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:24:19.870201",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/transformers/user.transformer.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:24:27.722047",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/repositories/user.repository.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:24:35.365674",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/services/user.service.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:24:45.903699",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/pages/Profile/Profile.tsx",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:24:50.453727",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/providers/user.provider.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:25:22.048130",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/controllers/user.controller.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:25:36.707450",
+      "session": 0
+    },
+    {
+      "path": "frontend/src/App.css",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:25:41.725032",
+      "session": 0
+    },
+    {
+      "path": "backend/src/modules/users/users.module.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:25:43.188849",
+      "session": 0
+    },
+    {
+      "path": "backend/src/app.module.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:25:56.402100",
+      "session": 0
+    },
+    {
+      "path": "feature_list.json",
+      "access_type": "read",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:26:19.316225",
+      "session": 0
+    },
+    {
+      "path": "feature_list.json",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:26:32.474049",
+      "session": 0
+    },
+    {
+      "path": "feature_list.json",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:26:48.733660",
+      "session": 0
+    },
+    {
+      "path": "feature_list.json",
+      "access_type": "read",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:26:52.302481",
+      "session": 0
+    },
+    {
+      "path": "backend/src/main.ts",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:27:00.110713",
+      "session": 0
+    },
+    {
+      "path": "feature_list.json",
+      "access_type": "write",
+      "agent_id": "frontend",
+      "timestamp": "2026-02-07T17:27:03.965867",
+      "session": 0
+    },
+    {
+      "path": "backend/.env.example",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:27:05.836156",
+      "session": 0
+    },
+    {
+      "path": "backend/docker-compose.yml",
+      "access_type": "write",
+      "agent_id": "backend",
+      "timestamp": "2026-02-07T17:27:13.521022",
       "session": 0
     }
   ]

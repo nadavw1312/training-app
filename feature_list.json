@@ -135,39 +135,6 @@
   ],
   "pending_frontend": [
     {
-      "name": "Initialize React Frontend",
-      "id": "init-react",
-      "description": "Set up React application with Vite, TypeScript, and basic routing",
-      "is_init": true,
-      "depends_on": [],
-      "acceptance_criteria": [
-        "React project created with Vite and TypeScript",
-        "Basic routing structure set up",
-        "Build and dev commands work",
-        "Project structure follows React best practices"
-      ],
-      "subtasks": [
-        {
-          "id": "init-project",
-          "description": "Create React project with Vite",
-          "file_scope": ["frontend/package.json", "frontend/vite.config.ts", "frontend/tsconfig.json"],
-          "depends_on": []
-        },
-        {
-          "id": "init-routing",
-          "description": "Set up React Router and basic routes",
-          "file_scope": ["frontend/src/App.tsx", "frontend/src/routes/**", "frontend/src/main.tsx"],
-          "depends_on": ["init-project"]
-        },
-        {
-          "id": "init-structure",
-          "description": "Create core project structure and components",
-          "file_scope": ["frontend/src/components/**", "frontend/src/layouts/**", "frontend/src/hooks/**"],
-          "depends_on": ["init-project"]
-        }
-      ]
-    },
-    {
       "name": "Authentication UI",
       "id": "auth-ui",
       "description": "Create login, registration, and authentication flow UI",
@@ -268,5 +235,39 @@
     }
   ],
   "completed_backend": [],
-  "completed_frontend": []
+  "completed_frontend": [
+    {
+      "name": "Initialize React Frontend",
+      "id": "init-react",
+      "description": "Set up React application with Vite, TypeScript, and basic routing",
+      "is_init": true,
+      "depends_on": [],
+      "acceptance_criteria": [
+        "React project created with Vite and TypeScript",
+        "Basic routing structure set up",
+        "Build and dev commands work",
+        "Project structure follows React best practices"
+      ],
+      "subtasks": [
+        {
+          "id": "init-project",
+          "description": "Create React project with Vite",
+          "file_scope": ["frontend/package.json", "frontend/vite.config.ts", "frontend/tsconfig.json"],
+          "depends_on": []
+        },
+        {
+          "id": "init-routing",
+          "description": "Set up React Router and basic routes",
+          "file_scope": ["frontend/src/App.tsx", "frontend/src/routes/**", "frontend/src/main.tsx"],
+          "depends_on": ["init-project"]
+        },
+        {
+          "id": "init-structure",
+          "description": "Create core project structure and components",
+          "file_scope": ["frontend/src/components/**", "frontend/src/layouts/**", "frontend/src/hooks/**"],
+          "depends_on": ["init-project"]
+        }
+      ]
+    }
+  ]
 }
