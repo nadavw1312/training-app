@@ -42,8 +42,15 @@ exports.UserController = UserController;
 __decorate([
     (0, common_1.Post)(),
     (0, swagger_1.ApiOperation)({ summary: 'Create a new user' }),
-    (0, swagger_1.ApiResponse)({ status: 201, description: 'User created successfully', type: user_response_dto_1.UserResponseDto }),
-    (0, swagger_1.ApiResponse)({ status: 409, description: 'User with this email already exists' }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'User created successfully',
+        type: user_response_dto_1.UserResponseDto,
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 409,
+        description: 'User with this email already exists',
+    }),
     (0, swagger_1.ApiResponse)({ status: 500, description: 'Internal server error' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -54,7 +61,11 @@ __decorate([
     (0, common_1.Get)(':id'),
     (0, swagger_1.ApiOperation)({ summary: 'Get user by ID' }),
     (0, swagger_1.ApiParam)({ name: 'id', description: 'User ID' }),
-    (0, swagger_1.ApiResponse)({ status: 200, description: 'User found', type: user_response_dto_1.UserResponseDto }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'User found',
+        type: user_response_dto_1.UserResponseDto,
+    }),
     (0, swagger_1.ApiResponse)({ status: 404, description: 'User not found' }),
     (0, swagger_1.ApiResponse)({ status: 500, description: 'Internal server error' }),
     __param(0, (0, common_1.Param)('id')),
@@ -65,7 +76,11 @@ __decorate([
 __decorate([
     (0, common_1.Get)(),
     (0, swagger_1.ApiOperation)({ summary: 'Get all users' }),
-    (0, swagger_1.ApiResponse)({ status: 200, description: 'Users retrieved successfully', type: [user_response_dto_1.UserResponseDto] }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Users retrieved successfully',
+        type: [user_response_dto_1.UserResponseDto],
+    }),
     (0, swagger_1.ApiResponse)({ status: 500, description: 'Internal server error' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),

@@ -13,8 +13,15 @@ export class UserController {
 
   @Post()
   @ApiOperation({ summary: 'Create a new user' })
-  @ApiResponse({ status: 201, description: 'User created successfully', type: UserResponseDto })
-  @ApiResponse({ status: 409, description: 'User with this email already exists' })
+  @ApiResponse({
+    status: 201,
+    description: 'User created successfully',
+    type: UserResponseDto,
+  })
+  @ApiResponse({
+    status: 409,
+    description: 'User with this email already exists',
+  })
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async create(@Body() dto: CreateUserRequestDto): Promise<UserResponseDto> {
     this.logger.log('Received create user request', { email: dto.email });
@@ -24,7 +31,11 @@ export class UserController {
   @Get(':id')
   @ApiOperation({ summary: 'Get user by ID' })
   @ApiParam({ name: 'id', description: 'User ID' })
-  @ApiResponse({ status: 200, description: 'User found', type: UserResponseDto })
+  @ApiResponse({
+    status: 200,
+    description: 'User found',
+    type: UserResponseDto,
+  })
   @ApiResponse({ status: 404, description: 'User not found' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async findById(@Param('id') id: string): Promise<UserResponseDto> {
@@ -34,7 +45,11 @@ export class UserController {
 
   @Get()
   @ApiOperation({ summary: 'Get all users' })
-  @ApiResponse({ status: 200, description: 'Users retrieved successfully', type: [UserResponseDto] })
+  @ApiResponse({
+    status: 200,
+    description: 'Users retrieved successfully',
+    type: [UserResponseDto],
+  })
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async findAll(): Promise<UserResponseDto[]> {
     this.logger.log('Received get all users request');

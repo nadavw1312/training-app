@@ -1,39 +1,6 @@
 {
   "pending_backend": [
     {
-      "name": "Initialize NestJS Backend",
-      "id": "init-nestjs",
-      "description": "Set up NestJS application with TypeScript, database connection, and basic project structure",
-      "is_init": true,
-      "depends_on": [],
-      "acceptance_criteria": [
-        "NestJS project created with TypeScript",
-        "Database connection configured",
-        "Project structure follows NestJS best practices",
-        "Build and test commands work"
-      ],
-      "subtasks": [
-        {
-          "id": "init-project",
-          "description": "Create NestJS project with CLI",
-          "file_scope": ["backend/package.json", "backend/tsconfig.json", "backend/nest-cli.json"],
-          "depends_on": []
-        },
-        {
-          "id": "init-db",
-          "description": "Set up database connection and configuration",
-          "file_scope": ["backend/src/database/**", "backend/.env*"],
-          "depends_on": ["init-project"]
-        },
-        {
-          "id": "init-structure",
-          "description": "Create core modules and project structure",
-          "file_scope": ["backend/src/app.module.ts", "backend/src/main.ts", "backend/src/common/**"],
-          "depends_on": ["init-project"]
-        }
-      ]
-    },
-    {
       "name": "User Authentication System",
       "id": "user-auth",
       "description": "Implement user registration, login, JWT token generation and validation",
@@ -234,7 +201,41 @@
       ]
     }
   ],
-  "completed_backend": [],
+  "completed_backend": [
+    {
+      "name": "Initialize NestJS Backend",
+      "id": "init-nestjs",
+      "description": "Set up NestJS application with TypeScript, database connection, and basic project structure",
+      "is_init": true,
+      "depends_on": [],
+      "acceptance_criteria": [
+        "NestJS project created with TypeScript",
+        "Database connection configured",
+        "Project structure follows NestJS best practices",
+        "Build and test commands work"
+      ],
+      "subtasks": [
+        {
+          "id": "init-project",
+          "description": "Create NestJS project with CLI",
+          "file_scope": ["backend/package.json", "backend/tsconfig.json", "backend/nest-cli.json"],
+          "depends_on": []
+        },
+        {
+          "id": "init-db",
+          "description": "Set up database connection and configuration",
+          "file_scope": ["backend/src/database/**", "backend/.env*"],
+          "depends_on": ["init-project"]
+        },
+        {
+          "id": "init-structure",
+          "description": "Create core modules and project structure",
+          "file_scope": ["backend/src/app.module.ts", "backend/src/main.ts", "backend/src/common/**"],
+          "depends_on": ["init-project"]
+        }
+      ]
+    }
+  ],
   "completed_frontend": [
     {
       "name": "Initialize React Frontend",

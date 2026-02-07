@@ -8,8 +8,8 @@ export class UserTransformer {
     const dm = new UserDm();
     dm.email = dto.email;
     dm.password = dto.password;
-    dm.firstName = dto.firstName;
-    dm.lastName = dto.lastName;
+    dm.firstName = dto.firstName || null;
+    dm.lastName = dto.lastName || null;
     dm.role = dto.role;
     dm.isActive = true;
     return dm;

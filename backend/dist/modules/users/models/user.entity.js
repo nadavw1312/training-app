@@ -38,11 +38,11 @@ __decorate([
 ], UserEntity.prototype, "password", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], UserEntity.prototype, "firstName", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], UserEntity.prototype, "lastName", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'enum', enum: user_role_enum_1.UserRole, default: user_role_enum_1.UserRole.STUDENT }),

@@ -30,6 +30,8 @@ export class UserService {
 
   async findAll(): Promise<UserDm[]> {
     const entities = await this.repository.findAll();
-    return entities.map(UserTransformer.transformEntityToDm);
+    return entities.map((entity) =>
+      UserTransformer.transformEntityToDm(entity),
+    );
   }
 }

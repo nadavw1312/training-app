@@ -4,8 +4,8 @@ export class UserDm {
   id: string;
   email: string;
   password: string;
-  firstName?: string;
-  lastName?: string;
+  firstName: string | null;
+  lastName: string | null;
   role: UserRole;
   isActive: boolean;
   createdAt: Date;

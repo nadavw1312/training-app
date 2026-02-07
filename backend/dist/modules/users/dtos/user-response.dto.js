@@ -32,12 +32,12 @@ __decorate([
     __metadata("design:type", String)
 ], UserResponseDto.prototype, "email", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'John', required: false }),
-    __metadata("design:type", String)
+    (0, swagger_1.ApiProperty)({ example: 'John', required: false, nullable: true }),
+    __metadata("design:type", Object)
 ], UserResponseDto.prototype, "firstName", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Doe', required: false }),
-    __metadata("design:type", String)
+    (0, swagger_1.ApiProperty)({ example: 'Doe', required: false, nullable: true }),
+    __metadata("design:type", Object)
 ], UserResponseDto.prototype, "lastName", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ enum: user_role_enum_1.UserRole, example: user_role_enum_1.UserRole.STUDENT }),

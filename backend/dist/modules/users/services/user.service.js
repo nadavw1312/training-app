@@ -69,7 +69,7 @@ let UserService = class UserService {
     }
     async findAll() {
         const entities = await this.repository.findAll();
-        return entities.map(user_transformer_1.UserTransformer.transformEntityToDm);
+        return entities.map((entity) => user_transformer_1.UserTransformer.transformEntityToDm(entity));
     }
 };
 exports.UserService = UserService;

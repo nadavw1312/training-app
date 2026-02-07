@@ -17,12 +17,15 @@ export class UserProvider {
       // Check if user already exists
       const existingUser = await this.service.findByEmail(dto.email);
       if (existingUser) {
-        throw new HttpException('User with this email already exists', HttpStatus.CONFLICT);
+        throw new HttpException(
+          'User with this email already exists',
+          HttpStatus.CONFLICT,
+        );
       }
 
       const dm = UserTransformer.transformDtoToDm(dto);
       const newDm = await this.service.create(dm);
-      
+
       this.logger.log('User created successfully', { userId: newDm.id });
       return UserTransformer.transformDmToResponseDto(newDm);
     } catch (error) {
@@ -30,7 +33,7 @@ export class UserProvider {
         error: error.message,
         email: dto.email,
       });
-      
+
       if (error instanceof HttpException) {
         throw error;
       }
@@ -44,7 +47,7 @@ export class UserProvider {
   async findById(id: string): Promise<UserResponseDto> {
     try {
       this.logger.log('Finding user by ID', { userId: id });
-      
+
       const dm = await this.service.findById(id);
       if (!dm) {
         throw new HttpException('User not found', HttpStatus.NOT_FOUND);
@@ -56,7 +59,7 @@ export class UserProvider {
         error: error.message,
         userId: id,
       });
-      
+
       if (error instanceof HttpException) {
         throw error;
       }
@@ -70,11 +73,13 @@ export class UserProvider {
   async findAll(): Promise<UserResponseDto[]> {
     try {
       this.logger.log('Finding all users');
-      
+
       const dms = await this.service.findAll();
-      return dms.map(UserTransformer.transformDmToResponseDto);
-    } catch (error) {
-      this.logger.error('Failed to find users', { error: error.message });
+      return dms.map((dm) => UserTransformer.transformDmToResponseDto(dm));
+    } catch (error: unknown) {
+      this.logger.error('Failed to find users', {
+        error: error instanceof Error ? error.message : 'Unknown error',
+      });
       throw new HttpException(
         'Failed to retrieve users',
         HttpStatus.INTERNAL_SERVER_ERROR,

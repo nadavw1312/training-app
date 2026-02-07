@@ -67,10 +67,12 @@ let UserProvider = UserProvider_1 = class UserProvider {
         try {
             this.logger.log('Finding all users');
             const dms = await this.service.findAll();
-            return dms.map(user_transformer_1.UserTransformer.transformDmToResponseDto);
+            return dms.map((dm) => user_transformer_1.UserTransformer.transformDmToResponseDto(dm));
         }
         catch (error) {
-            this.logger.error('Failed to find users', { error: error.message });
+            this.logger.error('Failed to find users', {
+                error: error instanceof Error ? error.message : 'Unknown error',
+            });
             throw new common_1.HttpException('Failed to retrieve users', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

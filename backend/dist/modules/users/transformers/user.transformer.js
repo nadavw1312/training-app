@@ -9,8 +9,8 @@ class UserTransformer {
         const dm = new user_dm_1.UserDm();
         dm.email = dto.email;
         dm.password = dto.password;
-        dm.firstName = dto.firstName;
-        dm.lastName = dto.lastName;
+        dm.firstName = dto.firstName || null;
+        dm.lastName = dto.lastName || null;
         dm.role = dto.role;
         dm.isActive = true;
         return dm;
@@ -19,8 +19,8 @@ class UserTransformer {
         const entity = new user_entity_1.UserEntity();
         entity.email = dm.email;
         entity.password = dm.password;
-        entity.firstName = dm.firstName;
-        entity.lastName = dm.lastName;
+        entity.firstName = dm.firstName || null;
+        entity.lastName = dm.lastName || null;
         entity.role = dm.role;
         entity.isActive = dm.isActive;
         return entity;

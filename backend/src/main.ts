@@ -5,10 +5,10 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   // Enable CORS
   app.enableCors();
-  
+
   // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
@@ -17,21 +17,25 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  
+
   // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('Training Application API')
-    .setDescription('API for managing courses, lessons, progress tracking, quizzes, and users')
+    .setDescription(
+      'API for managing courses, lessons, progress tracking, quizzes, and users',
+    )
     .setVersion('1.0')
     .addTag('users', 'User management endpoints')
     .build();
-  
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  
+
   const port = process.env.PORT || 3000;
   await app.listen(port);
+
   console.log(`Application is running on: http://localhost:${port}`);
+
   console.log(`Swagger documentation: http://localhost:${port}/api`);
 }
 bootstrap();
